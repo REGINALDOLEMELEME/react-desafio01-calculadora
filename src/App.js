@@ -63,6 +63,20 @@ const App = () => {
 
   }
 
+  const handleDivideNumbers = () => {
+
+    if(firstNumber === '0'){
+        setFirstNumber(String(currentNumber));
+        setCurrentNumber('0')
+        setOperation('/')
+    }else {
+      const div = Number(firstNumber) / Number(currentNumber);
+      setCurrentNumber(String(div))
+      setOperation('')
+    }
+
+  }
+
   const handleEquals = () => {
 
     if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
@@ -76,6 +90,10 @@ const App = () => {
           case '*':
             handleMultiplyNumbers();
             break;
+
+            case '/':
+              handleDivideNumbers();
+              break;
           
             default: 
             break;
@@ -90,7 +108,7 @@ const App = () => {
         <Input value={currentNumber}/>
         <Row>
           <Button label="x" onClick={handleMultiplyNumbers}/>
-          <Button label="/"/>
+          <Button label="/"onClick={handleDivideNumbers}/>
           <Button label="c" onClick={handleOnClear}/>
           <Button label="."/>
         </Row>
